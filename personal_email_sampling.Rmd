@@ -1,6 +1,6 @@
 ---
 title: "Personal Email Sampling"
-author: "Phillip Brown and Oluwabukola Emi-Johnson"
+author: Oluwabukola Emi-Johnson"
 date: "December 12, 2024"
 output: pdf_document
 ---
