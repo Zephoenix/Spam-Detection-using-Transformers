@@ -5,6 +5,7 @@ from transformers import BertTokenizerFast, BertForSequenceClassification
 model = BertForSequenceClassification.from_pretrained("./saved_bert_model")
 tokenizer = BertTokenizerFast.from_pretrained("./saved_bert_model")
 
+
 app = Flask(__name__)
 
 @app.route('/')
