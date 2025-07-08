@@ -1,0 +1,37 @@
+---
+title: "Personal Email Sampling"
+author: "Phillip Brown and Oluwabukola Emi-Johnson"
+date: "December 12, 2024"
+output: pdf_document
+---
+
+``` {r}
+# Load the Packages
+suppressMessages (suppressWarnings (library (data.table)))
+suppressMessages (suppressWarnings (library (dplyr)))
+```
+
+``` {r}
+# Load the Emails
+personal <- fread ("personal_email.csv")
+school <- fread ("school_email.csv")
+work <- fread ("work_email.csv")
+
+# Combine the Emails
+emails <- rbind (personal, school, work)
+```
+
+``` {r}
+# Randomly Sample 100 Emails
+set.seed (674)
+emails <- emails [sample (nrow (emails), 100), ]
+
+# Classify the 100 Emails as Spam or Ham
+emails <- emails %>%
+  mutate (Classification = c ("Spam", "Ham", "Spam", "Spam", "Ham", "Spam", "Ham", "Spam", "Ham", "Ham", "Ham", "Ham", "Ham", "Ham", "Ham", "Ham", "Spam", "Spam", "Ham", "Ham", "Ham", "Ham", "Spam", "Spam", "Ham", "Spam", "Ham", "Spam", "Ham", "Ham", "Ham", "Ham", "Spam", "Ham", "Ham", "Ham", "Ham", "Spam", "Spam", "Ham", "Ham", "Spam", "Ham", "Ham", "Ham", "Ham", "Spam", "Spam", "Spam", "Ham", "Spam", "Ham", "Spam", "Ham", "Spam", "Ham", "Ham", "Ham", "Spam", "Ham", "Ham", "Ham", "Ham", "Ham", "Spam", "Spam", "Ham", "Ham", "Ham", "Ham", "Ham", "Ham", "Ham", "Ham", "Ham", "Ham", "Spam", "Ham", "Spam", "Ham", "Spam", "Ham", "Spam", "Spam", "Ham", "Spam", "Ham", "Ham", "Ham", "Spam", "Spam", "Spam", "Spam", "Ham", "Ham", "Spam", "Spam", "Ham", "Spam", "Spam"))
+```
+
+``` {r}
+# Write the Emails to a CSV File
+write.csv (emails, "emails.csv", row.names = FALSE)
+```
